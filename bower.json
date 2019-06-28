@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-sample",
+  "description": "ExpressJS Sample Application",
+  "main": "app/app.js",
+  "license": "ISC",
+  "homepage": "https://github.com/che-samples/web-nodejs-sample",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}
