@@ -12,10 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "bower": "^1.8.8",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "js-autocomplete": "^1.0.4",
+    "typescript": "^3.5.2"
   },
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-jshint": "^2.1.0",
+    "jshint": "^2.10.2"
   },
   "repository": {
     "type": "git",
