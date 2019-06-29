@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var hint = require('gulp-jshint');
-
+var nodemon = require('gulp-nodemon');
 var Files = ['*.js','src/**/*.js'];
 
 
@@ -8,21 +8,6 @@ gulp.task('style',function(){
     return gulp.src(Files)
     .pipe(hint());
 });
-
-gulp.task('inject',function(){
-   
-   var wire = require('wiredep').stream;
-   var options ={
-       bowerJson: require('./bower.json'),
-       directory: './bower_components'
-       }
-   return gulp.src('.src/views/*.html')
-   .pipe(wire(options))
-   .pipe(gulp.dest('./src/views'));
-   
-});
-
-
 
 
 
@@ -42,3 +27,18 @@ var injectOptions = {
     .pipe(inject(injectSrc,injectOptions))
     .pipe(gulp.dest('./src/views'));
 });
+
+gulp.task('sever',['style','bower'],function(){
+    var options = {
+        script: 'app.js',
+        delayTime: 1,
+        watch: Files
+    }
+    return nodemon(options)
+    .on('restart',function(ev){
+        console.log('restarting server...');
+    })
+    
+    
+});
+
