@@ -19,5 +19,18 @@ gulp.task('inject',function(){
    return gulp.src('.src/views/*.html')
    .pipe(wire(options))
    .pipe(gulp.dest('./src/views'));
-   ;
+   
+});
+
+
+
+var wiredep = require('wiredep').stream;
+ 
+gulp.task('bower', function () {
+ return gulp.src('./src/views/*.html')
+    .pipe(wiredep({
+       bowerJson: require('./bower.json'),
+       directory: './bower_components'
+    }))
+    .pipe(gulp.dest('./src/views'));
 });

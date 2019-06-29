@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 
 app.get('/hola', function (req, res) {
   res.send('Hola Mundo!');
-  res.
+
 });
 
 app.listen(5000, function () {
