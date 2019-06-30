@@ -1,6 +1,8 @@
 var express = require('express');
+var app= express();
 var eventRouter = express.Router('');
-
+app.use(express.static('public'));
+app.use(express.static('bower_components'));
 var eventsData = [
     {
         name: 'Event 1',
@@ -73,9 +75,22 @@ eventRouter.route('/')
             varEvents:eventsData
         })
     });
-eventRouter.route('/event')
+eventRouter.route('/:id')
     .get(function (req,res) {
-        res.send("Hello single Events")
+        var id = req.params.id;
+        var image_id = parseInt(id);
+        res.render('event',{
+            list:['Evento 1','Evento 2','Evento 3'],
+            nav:[{Link:'Services',Text:'Services'},
+                {Link:'Portfolio',Text:'Portfolio'},
+                {Link:'About',Text:'About'},
+                {Link:'Team',Text:'Team'},
+                {Link:'Contact',Text:'Contact'},
+                {Link: 'Events',Text:'Events'}
+            ],
+            varEvents:eventsData[id],
+            id:image_id+1
+        })
 
 
     });

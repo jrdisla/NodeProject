@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<link>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,7 +11,8 @@
   <title>Agency - Start Bootstrap Theme</title>
 
   <!-- Bootstrap core CSS -->
- <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+ <!--<link href="public/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <!--bower:css -->
 <!--endbower -->
@@ -226,25 +227,22 @@
       <div class="row">
         <div class="col-lg-12">
           <ul class="timeline">
-
-            <%for(i=0;i<varEvents.length;i++){%>
               <li>
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/about/<%=i+1%>.jpg" alt="">
+                  <img class="rounded-circle img-fluid" src="img/about/<%=id%>.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4><%=varEvents[i].date%> | <%=varEvents[i].time%></h4>
-                    <h4 class="subheading"><%=varEvents[i].name%></h4>
+                    <h4><%=varEvents.date%> | <%=varEvents.time%></h4>
+                    <h4 class="subheading"><%=varEvents.name%></h4>
                   </div>
                   <div class="timeline-body">
                     <p class="text-muted">
-                        <a href="/events/<%=i%>"><%=varEvents[i].description%></a>
+                        <%=varEvents.description%>
                     </p>
                   </div>
                 </div>
               </li>
-            <%}%>
             <li class="timeline-inverted">
               <div class="timeline-image">
                 <h4>Be Part
