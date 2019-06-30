@@ -28,17 +28,39 @@ var injectOptions = {
     .pipe(gulp.dest('./src/views'));
 });
 
-gulp.task('sever',['style','bower'],function(){
+// gulp.task('serve', ['bower'], function(){
+//     return nodemon({
+//         script: 'app/app.js',
+//         watch: Files
+//     })
+//         .on('restart', function(){
+//             console.log('restarted');
+//         })
+// })
+
+
+// gulp.task('sever',['style','bower'],function(){
+//     var options = {
+//         script: 'app.js',
+//         delayTime: 1,
+//         watch: Files
+//     }
+//     return nodemon(options)
+//     .on('restart',function(ev){
+//         console.log('restarting server...');
+//     })
+//
+//
+// });
+gulp.task('server',gulp.parallel('style','bower',function () {
     var options = {
-        script: 'app.js',
+        script: 'app/app.js',
         delayTime: 1,
         watch: Files
     }
     return nodemon(options)
-    .on('restart',function(ev){
-        console.log('restarting server...');
-    })
-    
-    
-});
+        .on('restart',function(ev){
+            console.log('restarting server...');
+        })
+}));
 
