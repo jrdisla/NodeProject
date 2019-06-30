@@ -18,7 +18,7 @@ var injectSrc = gulp.src(['./public/css/*.css','./public/js/*.js']);
 var injectOptions = {
     ignorePath: '/public/'
 }
- return gulp.src('./src/views/index.html')
+ return gulp.src('./src/views/index.ejs')
     .pipe(wiredep({
        bowerJson: require('./bower.json'),
        directory: './bower_components',

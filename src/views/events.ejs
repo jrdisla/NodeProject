@@ -57,21 +57,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
+          <% for(i=0;i<nav.length;i++){%>
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#<%=nav[i].Link%>"><%=nav[i].Text%></a>
+            </li>
+          <%}%>
         </ul>
       </div>
     </div>
@@ -89,7 +79,17 @@
   </header>
 
   <!-- Services -->
-  <section class="page-section" id="services">
+
+      <ul>
+          <% for (var i=0;i<list.length;i++){%>
+          <li>
+              <h4><%=list[i]%></h4>
+          </li>
+          <%}%>
+      </ul>
+
+
+  <section class="page-section" id="Services">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -127,7 +127,7 @@
   </section>
 
   <!-- Portfolio Grid -->
-  <section class="bg-light page-section" id="portfolio">
+  <section class="bg-light page-section" id="Portfolio">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -225,73 +225,34 @@
   </section>
 
   <!-- About -->
-  <section class="page-section" id="about">
+  <section class="page-section" id="About">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">About</h2>
+          <h2 class="section-heading text-uppercase">Our Events</h2>
           <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12">
           <ul class="timeline">
-            <li>
-              <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/1.jpg" alt="">
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>2009-2011</h4>
-                  <h4 class="subheading">Our Humble Beginnings</h4>
+
+            <%for(i=0;i<varEvents.length;i++){%>
+              <li>
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="img/about/<%=i+1%>.jpg" alt="">
                 </div>
-                <div class="timeline-body">
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h4><%=varEvents[i].date%> | <%=varEvents[i].time%></h4>
+                    <h4 class="subheading"><%=varEvents[i].name%></h4>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted"><%=varEvents[i].description%></p>
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li class="timeline-inverted">
-              <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/2.jpg" alt="">
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>March 2011</h4>
-                  <h4 class="subheading">An Agency is Born</h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/3.jpg" alt="">
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>December 2012</h4>
-                  <h4 class="subheading">Transition to Full Service</h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-inverted">
-              <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="img/about/4.jpg" alt="">
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>July 2014</h4>
-                  <h4 class="subheading">Phase Two Expansion</h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                </div>
-              </div>
-            </li>
+              </li>
+            <%}%>
             <li class="timeline-inverted">
               <div class="timeline-image">
                 <h4>Be Part
@@ -306,7 +267,7 @@
   </section>
 
   <!-- Team -->
-  <section class="bg-light page-section" id="team">
+  <section class="bg-light page-section" id="Team">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -425,7 +386,7 @@
   </section>
 
   <!-- Contact -->
-  <section class="page-section" id="contact">
+  <section class="page-section" id="Contact">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
@@ -726,8 +687,8 @@
   <script src="js/jqBootstrapValidation.js"></script>
   <script src="js/contact_me.js"></script>
 
-  <!-- Custom scripts for this template 
-  <script src="js/agency.min.js"></script>-->
+
+  <script src="js/agency.min.js"></script> -->
 
 </body>
 
