@@ -1,9 +1,8 @@
 var express = require('express');
 var app= express();
-var eventRouter = express.Router('');
+var dbRouter = express.Router('');
 var mongodb = require('mongodb').MongoClient;
-app.use(express.static('public'));
-app.use(express.static('bower_components'));
+
 var eventsData = [
     {
         name: 'Event 1',
@@ -62,45 +61,20 @@ var eventsData = [
 
 ]
 
-eventRouter.route('/')
+dbRouter.route('/AddEventData')
     .get(function (req,res) {
 
         var url = "mongodb://localhost:27017/";
         mongodb.connect(url, function (err, db) {
             if (err) throw err;
+
             var dbo = db.db("mydb");
-            dbo.collection('events').find({}).toArray(function (err,results) {
-                res.render('events',{
-                    list:['Evento 1','Evento 2','Evento 3'],
-                    nav:[{Link:'Services',Text:'Services'},
-                        {Link:'Portfolio',Text:'Portfolio'},
-                        {Link:'About',Text:'About'},
-                        {Link:'Team',Text:'Team'},
-                        {Link:'Contact',Text:'Contact'},
-                        {Link: 'Events',Text:'Events'}
-                    ],
-                    varEvents:results
-                })
+            var myobj = {name: "Company Inc", address: "Highway 37"};
+            dbo.collection("events").insertMany(eventsData, function (err, result) {
+                if (err) throw err;
+                res.send(result);
+                db.close();
             });
         });
     });
-eventRouter.route('/:id')
-    .get(function (req,res) {
-        var id = req.params.id;
-        var image_id = parseInt(id);
-        res.render('event',{
-            list:['Evento 1','Evento 2','Evento 3'],
-            nav:[{Link:'Services',Text:'Services'},
-                {Link:'Portfolio',Text:'Portfolio'},
-                {Link:'About',Text:'About'},
-                {Link:'Team',Text:'Team'},
-                {Link:'Contact',Text:'Contact'},
-                {Link: 'Events',Text:'Events'}
-            ],
-            varEvents:eventsData[id],
-            id:image_id+1
-        })
-
-
-    });
-module.exports = eventRouter;
+module.exports = dbRouter;
