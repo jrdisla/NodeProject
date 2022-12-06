@@ -13,7 +13,7 @@
   "dependencies": {
     "bower": "^1.8.8",
     "ejs": "^2.6.2",
-    "express": "^4.13.4",
+    "express": "^4.17.3",
     "js-autocomplete": "^1.0.4",
     "mongodb": "^3.2.7",
     "typescript": "^3.5.2"
